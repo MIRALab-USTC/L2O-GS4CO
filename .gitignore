@@ -1,0 +1,7 @@
+.vscode/
+results/*
+data/
+__pycache__/
+eval_results
+*.out
+outputs/*

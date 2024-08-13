@@ -1,0 +1,48 @@
+exp_name: default
+exp_num: 3
+continue_train: false
+
+train_kwargs:
+  batch_size: 512
+  data_batch_size: 1000
+  eval_expression_num: 96
+  record_expression_num: 16
+  early_stop: 2000
+  score_func_name: precision
+
+instance_kwargs:
+  instance_type: setcover
+  train_num: 10000
+  valid_num: 2000
+  batch_size_train: 1000
+  batch_size_valid: 2000
+
+expression_kwargs:
+  math_list: simple
+  var_list: graph
+  scatter_max_degree: 2
+
+dso_agent_kwargs:
+  class: "TransformerDSOAgent"
+  transformer_kwargs:
+    min_length: 4
+    max_length: 64
+    soft_length: 32
+    two_sigma_square: 16
+    d_model: 32
+    num_heads: 4
+    d_ff: 128
+    num_layers: 4
+    structural_encoding: true
+
+
+rl_algo_kwargs:
+  class: PPOAlgo
+  kwargs:
+    lr_actor: 5e-5
+    K_epochs: 10
+    entropy_coef: 0.2
+    entropy_gamma: 0.95
+    entropy_decrease: false
+    lr_decrease: false
+    decrease_period: 700
